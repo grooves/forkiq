@@ -22,6 +22,7 @@ end
 
 gem 'jquery-rails'
 gem 'action_args'
+gem 'strong_parameters'
 
 group :development, :test do
   gem 'rspec-rails'
