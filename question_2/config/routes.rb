@@ -1,4 +1,6 @@
 Question2::Application.routes.draw do
+  get "skills/create"
+
   post '/login' => 'sessions#login', as: 'login'
   delete '/logout' => 'sessions#logout', as: 'logout'
 
