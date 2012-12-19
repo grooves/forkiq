@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209150353) do
+ActiveRecord::Schema.define(:version => 20121219103138) do
 
   create_table "publication_skilltags", :force => true do |t|
     t.integer  "publication_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20121209150353) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
+
+  add_index "publication_skilltags", ["publication_id", "skilltag_id"], :name => "index_publication_skilltags_on_publication_id_and_skilltag_id"
 
   create_table "publications", :force => true do |t|
     t.string   "title"
@@ -41,12 +43,16 @@ ActiveRecord::Schema.define(:version => 20121209150353) do
     t.datetime "updated_at",     :null => false
   end
 
+  add_index "user_publications", ["user_id", "publication_id"], :name => "index_user_publications_on_user_id_and_publication_id"
+
   create_table "user_skilltags", :force => true do |t|
     t.integer  "user_id"
     t.integer  "skilltag_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "user_skilltags", ["user_id", "skilltag_id"], :name => "index_user_skilltags_on_user_id_and_skilltag_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"
