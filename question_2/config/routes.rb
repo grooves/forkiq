@@ -1,6 +1,4 @@
 Question2::Application.routes.draw do
-  get "skills/create"
-
   post '/login' => 'sessions#login', as: 'login'
   delete '/logout' => 'sessions#logout', as: 'logout'
 
@@ -8,10 +6,7 @@ Question2::Application.routes.draw do
 
   resources :publications, except: [:edit, :update, :destroy] do
     resources :authorships, only: :create
-
-    member do
-      put :add_skilltag
-    end
+    resources :skills, only: :create
   end
 
   resources :users, only: :show do

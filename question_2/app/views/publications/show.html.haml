@@ -9,7 +9,7 @@
       %li= skilltag.name
     - if user_signed_in?
       %li
-        = form_tag add_skilltag_publication_path(@publication), method: :put do
+        = form_tag [@publication, :skills], method: :post do
           = text_field_tag :skilltag
           = submit_tag 'スキルタグ登録する'
 
