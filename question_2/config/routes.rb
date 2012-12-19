@@ -6,7 +6,7 @@ Question2::Application.routes.draw do
 
   root to: 'top#index'
 
-  resources :publications, except: [:edit, :udpate, :destroy] do
+  resources :publications, except: [:edit, :update, :destroy] do
     member do
       put :add_author
       put :add_skilltag
