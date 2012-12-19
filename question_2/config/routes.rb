@@ -1,14 +1,13 @@
 Question2::Application.routes.draw do
-  get "authorships/create"
-
   post '/login' => 'sessions#login', as: 'login'
   delete '/logout' => 'sessions#logout', as: 'logout'
 
   root to: 'top#index'
 
   resources :publications, except: [:edit, :update, :destroy] do
+    resources :authorships, only: :create
+
     member do
-      put :add_author
       put :add_skilltag
     end
   end
