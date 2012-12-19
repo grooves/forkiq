@@ -9,8 +9,6 @@ class SkilltagsController < ApplicationController
     @user = User.find params[:user_id]
     @skilltag = Skilltag.where(name: params[:skilltag][:name]).first_or_initialize
 
-    return redirect_to @user, notice: "すでに登録済みです" if @user.skilltags.include? @skilltag
-
     if @user.skilltags << @skilltag
       redirect_to @user, notice: "#{@skilltag.name}を登録しました"
     else
